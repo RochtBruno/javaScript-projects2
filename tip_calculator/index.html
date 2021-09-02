@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2cef6ec148.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Tip Calculator</title>
+</head>
+<body style="text-align: center">
+
+    <div class="container">
+        <div class="calculator">
+            <h3 style="text-align: center; font-weight: bold;text-transform: uppercase;">Tip calculator</h3>
+            <p style="border-top: 2px solid lightgrey;"></p>
+            <br>
+            <label for="amount">Bill amount</label>
+            <br>
+            <button style="background-color: lightgreen;"><i class="fas fa-dollar-sign"></i></button><input type="number" id="amount">
+            <br>
+            <br>
+            <label for="guest">Number of guests</label>
+            <br>
+            <button style="background-color: lightsalmon;"><i class="fas fa-user-friends"></i></button><input type="number" id="guest">
+            <br>
+            <br>
+            <label for="quality">Service quality</label>
+            <br>
+            <select id="quality">
+                <option disabled selected value = "0">Choose</option>
+                <option value="0.3">30% - Outstanding</option>
+                <option value="0.2">20% - Good</option>
+                <option value="0.15">15% - Ok</option>
+                <option value="0.1">10% - Bad</option>
+                <option value="0.05">5% - Terrible</option>
+            </select>
+
+            <div style="padding: 20px 0;">
+                <p style="border-top: 2px solid lightgrey;"></p>
+                <button onclick="calculate()">Calculate</button>
+            </div>
+        </div>
+        <div id="tip-amount"></div>
+    </div>
+    
+    <script src="functions.js"></script>
+
+</body>
+</html>
