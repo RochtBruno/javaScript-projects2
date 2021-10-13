@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    <title>BMI CALCULATOR</title>
+</head>
+<style>
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Roboto Condensed', sans-serif;;
+}
+html,body{
+    background-image: url('https://cdn.pixabay.com/photo/2017/06/21/07/33/background-2426328_960_720.jpg');
+    background-position: center;
+    background-size: cover;
+}
+.main {
+    height: 80vh;
+    width: 80%;
+    max-width: 500px;
+    background-color: yellow;
+    border-radius: 25px;
+    margin: 50px auto;
+    padding: 0 2%;
+    -webkit-box-shadow: 3px 3px 10px 3px #000000; 
+    box-shadow: 3px 3px 10px 3px #000000;
+}
+.content h1{
+    text-align: center;
+    padding-top: 15px;
+    border-bottom: 1px solid black;
+}
+.infos {
+    display: flex;
+    padding: 8px 0;
+}
+.infos label{
+    text-align: center;
+    width: 50%;
+    font-size: 20px;
+}
+.infos input {
+    width: 35%;
+    padding-left: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+    text-align: center;
+    height: 35px;
+    width: 50%;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor:pointer;
+    font-size: 19px;
+}
+button:hover{
+    background-color: black;
+    color: yellow;
+}
+.result {
+    display: flex;
+    width: 80%;
+    height: 180px;
+    background-color: black;
+    margin: 20px auto;
+    border-radius: 15px;
+    text-align: center;
+    align-items: center;
+    color: yellow;
+    padding: 0 2%;
+}
+</style>
+<body>
+    <div class="main">
+        <div class="content">
+            <h1>BMI Calculator</h1>
+
+            <div class="infos">
+                <label>Name:</label>
+                <input type="text" id="name" />
+            </div>
+            <div class="infos">
+                <label>Height(m):</label>
+                <input type="number" id="height" />
+            </div>
+            <div class="infos">
+                <label>Weight(Kg):</label>
+                <input type="number" id="weight" />
+            </div>
+            <button id="calculate">Calculate</button>
+
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+    <script>
+
+        var calculate = document.getElementById('calculate');
+        var result = document.getElementById('result');
+
+
+        function calculateBmi(){
+
+            var name = document.getElementById('name').value;
+            var height = document.getElementById('height').value;
+            var weight = document.getElementById('weight').value;
+            
+
+            if(name === '' || height === '' || weight === ''){
+                result.innerHTML = "<h3 style='margin: 0 auto'>There are missing informations!</h3>";
+                result.style.fontSize = '22px';
+            } else {
+                var bmiValue = ((weight) / (height * height)).toFixed(1);
+                let classification = '';
+
+                if(bmiValue < 18.5){
+                    classification = 'under weight.';
+                } else if(bmiValue < 25){
+                    classification = 'ideal weight.';
+                } else if(bmiValue < 30){
+                    classification = 'slightly overweight.';
+                } else if(bmiValue < 35){
+                    classification = 'obese';
+                } else if(bmiValue < 40){
+                    classification = 'obese grade II.';
+                } else {
+                    classification = 'almost Dying.';
+                }
+                result.innerHTML = `Hi ${name}, your BMI is ${bmiValue} and you are ${classification}`;
+                result.style.fontSize = '22px';
+            }
+            
+        };
+
+        
+
+        calculate.addEventListener('click',calculateBmi)
+
+       
+    </script>
+</body>
+</html>
